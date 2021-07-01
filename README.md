@@ -1,6 +1,6 @@
 # recipe-app
 
-Spring-Boot
+Spring-Boot, Spring-MVC
 
 JUnit5
 
