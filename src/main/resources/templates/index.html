@@ -28,13 +28,16 @@
                                     <th>ID</th>
                                     <th>DESCRIPTION</th>
                                     <th>VIEW</th>
+                                    <th>UPDATE</th>
                                 </tr>
                                 </thead>
                                 <tr th:each="recipe : ${recipes}">
                                     <td th:text=" ${recipe.id}" > 123 </td>
                                     <td th:text=" ${recipe.description}" > Spring in Action </td>
-                                    <td><a href="#" th:href="@{'recipe/show/'+${recipe.id}}">View</a></td>
+                                    <td><a href="#" th:href="@{'recipe/'+${recipe.id}+'/show'}">View</a></td>
+                                    <td><a href="#" th:href="@{'recipe/'+${recipe.id}+'/update'}">Update</a></td>
                                 </tr>
+
                             </table>
                         </div>
                     </div>
