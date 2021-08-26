@@ -60,7 +60,13 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label for="difficulty" class="form-control">Difficulty:</label>
-                                    <select id="difficulty" class="form-control">
+                                    <select id="difficulty" class="form-control" th:field="*{difficulty}">
+                                        <option th:each="difficultyValue : ${T(com.xergio.recipeapp.domian.Difficulty).values()}"
+                                                th:value="${difficultyValue.name()}"
+                                                th:text="${difficultyValue.name()}">
+                                            Easy</option>
+                                    </select>
+                                    <select class="form-control" th:remove="all">
                                         <option>Easy</option>
                                         <option>Medium</option>
                                         <option>Hard</option>
