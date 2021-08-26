@@ -3,6 +3,7 @@ package com.xergio.recipeapp.domian;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+
 @Entity
 public class Ingredient {
 
@@ -75,7 +76,7 @@ public class Ingredient {
         if (o == this) return true;
         if (!(o instanceof Ingredient)) return false;
         final Ingredient other = (Ingredient) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!other.canEqual(this)) return false;
         final Object this$id = this.getId();
         final Object other$id = other.getId();
         if (this$id == null ? other$id != null : !this$id.equals(other$id)) return false;
@@ -92,7 +93,7 @@ public class Ingredient {
         return true;
     }
 
-    protected boolean canEqual(final Object other) {
+    private boolean canEqual(final Object other) {
         return other instanceof Ingredient;
     }
 

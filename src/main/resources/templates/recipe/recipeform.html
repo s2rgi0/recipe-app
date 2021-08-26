@@ -26,8 +26,8 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3 form-group">
-                                    <label>Recipe Description:</label>
-                                    <input type="text" class="form-control" th:field="*{description}"/>
+                                    <label for="description">Recipe Description:</label>
+                                    <input id="description" type="text" class="form-group" th:field="*{description}"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -51,16 +51,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
-                                    <label>Prep Time:</label>
-                                    <input type="text" class="form-control" th:field="*{prepTime}"/>
+                                    <label for="preptime">Prep Time:</label>
+                                    <input id="preptime" type="text" class="form-control" th:field="*{prepTime}"/>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label>Cooktime:</label>
-                                    <input type="text" class="form-control" th:field="*{cookTime}"/>
+                                    <label for="cooktime" >Cooktime:</label>
+                                    <input id="cooktime" type="text" class="form-control" th:field="*{cookTime}"/>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label>Difficulty:</label>
-                                    <select class="form-control">
+                                    <label for="difficulty" class="form-control">Difficulty:</label>
+                                    <select id="difficulty" class="form-control">
                                         <option>Easy</option>
                                         <option>Medium</option>
                                         <option>Hard</option>
@@ -69,16 +69,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
-                                    <label>Servings:</label>
-                                    <input type="text" class="form-control" th:field="*{servings}"/>
+                                    <label for="servings" class="form-control">Servings:</label>
+                                    <input id="servings" type="text" class="form-control" th:field="*{servings}"/>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label>Source:</label>
-                                    <input type="text" class="form-control" th:field="*{source}"/>
+                                    <label for="source" class="form-control">Source:</label>
+                                    <input id="source" type="text" class="form-control" th:field="*{source}"/>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label>URL:</label>
-                                    <input type="text" class="form-control" th:field="*{url}"/>
+                                    <label for="url" class="form-control">URL:</label>
+                                    <input id="url" type="text" class="form-control" th:field="*{url}"/>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                         <li th:remove="all">1 Teaspoon of chocolate</li>
                                         <li th:each="ingredient : ${recipe.ingredients}"
                                             th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.unitOfMeasure.description +
+                                        ' ' + ingredient.getUom.description +
                                         ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                         </li>
                                     </ul>
@@ -111,24 +111,28 @@
                         </div>
                     </div>
                     <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">Directions</h1>
+                        <div  class="panel-heading">
+                            <label for="directions">
+                                Directions
+                            </label>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" rows="3" th:field="*{directions}"></textarea></div>
+                                    <textarea id="directions" class="form-control" rows="3" th:field="*{directions}"></textarea></div>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h1 class="panel-title">Notes</h1>
+                            <h1  class="panel-title">
+                                <label for="notes" >Notes</label>
+                            </h1>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+                                    <textarea id="notes" class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
                                 </div>
                             </div>
                         </div>

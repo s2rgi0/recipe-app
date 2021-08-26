@@ -30,21 +30,21 @@
 
                             <div class="row">
                                 <div class="col-md-3 form-group">
-                                    <label>Description:</label>
-                                    <input type="text" class="form-control" th:field="*{description}"/>
+                                    <label for="description">Description:</label>
+                                    <input id="description" type="text" class="form-control" th:field="*{description}"/>
                                 </div>
 
                                 <div class="col-md-3 form-group">
-                                    <label>Amount:</label>
-                                    <input type="number" class="form-control" th:field="*{amount}"/>
+                                    <label for="amount">Amount:</label>
+                                    <input id="amount" type="number" class="form-control" th:field="*{amount}"/>
                                 </div>
 
                                 <div class="col-md-3 form-group">
-                                    <label>UOM:</label>
-                                    <select class="form-control" name="uom.id">
+                                    <label for="uom">UOM:</label>
+                                    <select id="uom" class="form-control" name="uom.id">
                                         <option th:each="uomEach : ${uomList}"
                                                 th:value="${uomEach.id}"
-                                                th:selected="${uomEach.id.equals(ingredient.unitOfMeasure.id)}"
+                                                th:selected="${uomEach.id.equals(ingredient.getUom.id)}"
                                                 th:text="${uomEach.description}">Each</option>
                                     </select>
                                 </div>

@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class IngredientCommandToIngredientTest {
 
 
-    public static final Recipe RECIPE = new Recipe();
-    public static final BigDecimal AMOUNT = new BigDecimal("1");
-    public static final String DESCRIPTION = "Cheeseburger";
-    public static final Long ID_VALUE = new Long(1L);
-    public static final Long UOM_ID = new Long(2L);
+    private static final Recipe RECIPE = new Recipe();
+    private static final BigDecimal AMOUNT = new BigDecimal("1");
+    private static final String DESCRIPTION = "Cheeseburger";
+    private static final Long ID_VALUE = new Long(1L);
+    private static final Long UOM_ID = new Long(2L);
 
     IngredientCommandToIngredient converter;
 
@@ -28,17 +28,17 @@ class IngredientCommandToIngredientTest {
     }
 
     @Test
-    public void testNullObject() throws Exception {
+    private void testNullObject() throws Exception {
         assertNull(converter.convert(null));
     }
 
     @Test
-    public void testEmptyObject() throws Exception {
+    private void testEmptyObject() throws Exception {
         assertNotNull(converter.convert(new IngredientCommand()));
     }
 
     @Test
-    public void convert() throws Exception {
+    private void convert() throws Exception {
         //given
         IngredientCommand command = new IngredientCommand();
         command.setId(ID_VALUE);
@@ -46,7 +46,7 @@ class IngredientCommandToIngredientTest {
         command.setDescription(DESCRIPTION);
         UnitOfMeasureCommand unitOfMeasureCommand = new UnitOfMeasureCommand();
         unitOfMeasureCommand.setId(UOM_ID);
-        command.setUnitOfMeasure(unitOfMeasureCommand);
+        command.setUom(unitOfMeasureCommand);
 
         //when
         Ingredient ingredient = converter.convert(command);
@@ -61,7 +61,7 @@ class IngredientCommandToIngredientTest {
     }
 
     @Test
-    public void convertWithNullUOM() throws Exception {
+    private void convertWithNullUOM() throws Exception {
         //given
         IngredientCommand command = new IngredientCommand();
         command.setId(ID_VALUE);

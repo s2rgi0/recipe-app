@@ -43,7 +43,7 @@
                             </tr>
                             <tr>
                                 <td th:text="${ingredient.id}">334</td>
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.unitOfMeasure.getDescription()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
+                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.getUom.getDescription()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
                             </tr>
                         </table>
                     </div>
