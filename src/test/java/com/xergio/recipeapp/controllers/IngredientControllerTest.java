@@ -35,11 +35,11 @@ class IngredientControllerTest {
     private RecipeService recipeService;
 
     @Mock
-    private UnitOfMeasureService unitOfMeasureService;
+    public UnitOfMeasureService unitOfMeasureService;
 
-    private IngredientController controller;
+    public IngredientController controller;
 
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @BeforeEach
     void setUp() {
@@ -50,7 +50,7 @@ class IngredientControllerTest {
     }
 
     @Test
-    private void testListIngredients() throws Exception {
+    public void testListIngredients() throws Exception {
         //given
         RecipeCommand recipeCommand = new RecipeCommand();
         when(recipeService.findCommandById(anyLong())).thenReturn(recipeCommand);
@@ -122,5 +122,14 @@ class IngredientControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/recipe/2/ingredient/3/show"));
 
+    }
+
+    @Test
+    public void testDeleteIngredient() throws Exception {
+        mockMvc.perform(get("/recipe/12/ingredient/36/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/recipe/12/ingredients"));
+
+        verify(ingredientService, times(1)).deleteIngredient(anyLong(),anyLong());
     }
 }

@@ -5,6 +5,7 @@ import com.xergio.recipeapp.converters.IngredientCommandToIngredient;
 import com.xergio.recipeapp.converters.IngredientToIngredientCommand;
 import com.xergio.recipeapp.domian.Ingredient;
 import com.xergio.recipeapp.domian.Recipe;
+import com.xergio.recipeapp.repositories.IngredientRepository;
 import com.xergio.recipeapp.repositories.RecipeRepository;
 import com.xergio.recipeapp.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -115,6 +116,33 @@ public class IngredientServiceImpl implements IngredientService {
             return null;
 
         }
+    }
+
+    @Override
+    public void deleteIngredient(Long idRecipe, Long idIngredient) {
+
+        log.debug("deleting ingredient : "+idIngredient+" from recipe :: "+idRecipe);
+
+        Optional<Recipe> recipeOptional = recipeRepository.findById(idRecipe);
+
+        if(recipeOptional.isPresent()){
+            Recipe recipe = recipeOptional.get();
+            Optional<Ingredient> ingredientOptional = recipe.getIngredients().stream()
+                    .filter(ingredient -> ingredient.getId().equals(idIngredient))
+                    .findFirst();
+            if(ingredientOptional.isPresent()){
+                log.debug("found ingredient :::: HOOORAHH");
+                Ingredient ingredientToDelete = ingredientOptional.get();
+                ingredientToDelete.setRecipe(null);
+                recipe.getIngredients().remove(ingredientOptional.get());
+                recipeRepository.save(recipe);
+            }
+
+        }else{
+            log.debug("Recipe Id did "+idRecipe+"not find idIngredient "+idIngredient);
+        }
+
+
     }
 
 
