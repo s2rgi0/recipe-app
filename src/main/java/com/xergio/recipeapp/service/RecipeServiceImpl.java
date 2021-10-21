@@ -8,6 +8,7 @@ import com.xergio.recipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.xergio.recipeapp.exceptions.NotFoundException;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -41,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService{
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if(!recipeOptional.isPresent()){
-            throw new RuntimeException("Recipe Not FOund!");
+            throw new NotFoundException("Recipe Not FOund!");
         }
         return recipeOptional.get();
     }

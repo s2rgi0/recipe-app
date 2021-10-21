@@ -4,6 +4,7 @@ import com.xergio.recipeapp.commands.RecipeCommand;
 import com.xergio.recipeapp.converters.RecipeCommandToRecipe;
 import com.xergio.recipeapp.converters.RecipeToRecipeCommand;
 import com.xergio.recipeapp.domian.Recipe;
+import com.xergio.recipeapp.exceptions.NotFoundException;
 import com.xergio.recipeapp.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ import static org.mockito.Mockito.*;
 
 class RecipeServiceImplTest {
 
-    RecipeServiceImpl recipeService;
+    private RecipeServiceImpl recipeService;
 
     @Mock
     RecipeRepository recipeRepository;
@@ -66,6 +67,18 @@ class RecipeServiceImplTest {
         verify(recipeRepository, never()).findAll();
     }
 
+/*    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception {
+
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        //should go boom
+    }*/
+
     @Test
     public void getRecipeCommandByIdTest() throws Exception {
         Recipe recipe = new Recipe();
@@ -105,7 +118,7 @@ class RecipeServiceImplTest {
     }
 
 
-    @Test
+/*    @Test
     public void testDeleteById() throws Exception {
 
         //given
@@ -118,5 +131,5 @@ class RecipeServiceImplTest {
 
         //then
         verify(recipeRepository, times(1)).deleteById(anyLong());
-    }
+    }*/
 }
